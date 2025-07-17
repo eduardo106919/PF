@@ -1,13 +1,15 @@
 # Programação Funcional
 
-Neste repositório podes encontrar resoluções das fichas, questões e testes realizados na unidade curricular **Programação Funcional** no ano letivo 2023/2024.
+Conteúdo abordado na unidade curricular Programação Funcional no ano letivo 2023/2024.
 
-:warning: Não há garantia que as resoluções apresentadas estejam **completamente corretas**.
+## Conteúdo
 
-Conteúdos disponíveis:
-- [Fichas](/Fichas/)
-- [Questões](/Questoes/)
-- [Testes](/Testes/)
-- [Slides](/Slides/)
+Neste repositório poderás encontrar o seguinte conteúdo:
+- resolução das [fichas](fichas/) práticas
+- resolução das 50 [questões](questoes/) em Haskell
+- resolução de [testes](testes/) e exames de anos anteriores
+- [slides](slides/) com a matéria abordada na cadeira
 
-Se encontrarem **erros** ou **soluções melhores**, entrem em [contacto](mailto:a106919@uminho.pt) comigo.
+---
+
+Se encontrarem **erros** ou acharem que algo pode estar melhor entrem em [contacto](mailto:a106919@alunos.uminho.pt) comigo.
