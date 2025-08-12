@@ -1,5 +1,5 @@
 
-module Teste2019_20 where 
+module Teste1920 where 
 
 type ConjInt = [Intervalo]
 type Intervalo = (Int,Int)

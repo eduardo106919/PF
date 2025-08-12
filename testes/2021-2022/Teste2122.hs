@@ -1,5 +1,5 @@
 
-module Teste2021_22 where 
+module Teste2122 where 
 
 import Data.List
 import System.Random (randomRIO)

@@ -1,4 +1,4 @@
-module Exame2019_20 where 
+module Exame1920 where 
 
 import System.Random
 

@@ -1,5 +1,5 @@
 
-module Teste2022_23 where 
+module Teste2223 where 
 
 type Mat = [[Int]] 
 

@@ -1,5 +1,5 @@
 
-module Exame2021_22 where 
+module Exame2122 where 
 
 import System.Random
 
