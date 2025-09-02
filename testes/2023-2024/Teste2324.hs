@@ -16,11 +16,16 @@ instance Show Turma where
 
 showTurma :: Turma -> String
 showTurma Empty = ""
-showTurma (Node (num, nome) left right) = showTurma left ++ "(" ++ (show num) ++ ", " ++ nome ++")\n" ++ showTurma right
+showTurma (Node (num, nome) left right) = showTurma left ++ "(" ++ show num ++ ", " ++ nome ++")\n" ++ showTurma right
 
 
 limites :: Turma -> (Integer,Integer)
-limites = undefined
+limites Empty = error "Empty Tree"
+limites n = (minVal n, maxVal n)
+    where minVal (Node v Empty _)  = fst v
+          minVal (Node _ l _)      = minVal l
+          maxVal (Node v _ Empty)  = fst v
+          maxVal (Node _ _ r)      = maxVal r
 
 
 type TabAbrev = [(Palavra,Abreviatura)]
@@ -45,7 +50,7 @@ subst l tab = map (replaceWord tab) l
               where abv = lookup str t
 
 
-data LTree a = Tip a | Fork (LTree a) (LTree a)
+data LTree a = Tip a | Fork (LTree a) (LTree a) deriving Show
 
 dumpLT :: LTree a -> [(a,Int)]
 dumpLT tree = dumpLTAc 1 tree
@@ -54,7 +59,13 @@ dumpLT tree = dumpLTAc 1 tree
           dumpLTAc nivel (Fork l r) = dumpLTAc (nivel+1) l ++ dumpLTAc (nivel+1) r
 
 
-unDumpLT :: [(a,Int)] -> LTree a
-unDumpLT = undefined
-
+unDumpLT :: [(a, Int)] -> LTree a
+unDumpLT = fst . buildTree 1
+    where buildTree :: Int -> [(a, Int)] -> (LTree a, [(a, Int)])
+          buildTree level [] = error "Lista vazia"
+          buildTree level ((x, l):xs) | l == level = (Tip x, xs)
+                                      | l > level = let (left, rest1) = buildTree (level + 1) ((x, l):xs)
+                                                        (right, rest2) = buildTree (level + 1) rest1
+                                                    in (Fork left right, rest2)
+                                      | otherwise = error "Nível inválido"
 
