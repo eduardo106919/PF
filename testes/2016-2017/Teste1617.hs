@@ -3,6 +3,8 @@
 module Teste1617 where
 
 
+import Data.List
+
 type MSet a = [(a,Int)]
 
 multiSet :: MSet Char
@@ -86,8 +88,18 @@ tira value (Uniao l r) = (Uniao (tira value l) (tira value r))
 data RTree a = R a [RTree a]
 
 percorre :: [Int] -> RTree a -> Maybe [a]
-percorre = undefined
+percorre = percorreAcc []
+    where percorreAcc :: [a] -> [Int] -> RTree a -> Maybe [a]
+          percorreAcc acc [] _ = Just acc
+          percorreAcc acc (h:t) (R x l) | length l > h = Nothing
+                                        | otherwise = percorreAcc (acc ++ [x]) t (l !! h)
 
 procura :: Eq a => a -> RTree a -> Maybe [Int]
-procura = undefined
+procura x (R y subArvores) | x == y = Just []  -- encontrou na raiz, caminho vazio
+                           | otherwise = procuraLista x subArvores 1
+    where procuraLista :: Eq a => a -> [RTree a] -> Int -> Maybe [Int]
+          procuraLista x [] _ = Nothing
+          procuraLista x (arv:resto) n = case procura x arv of
+                                            Just caminho -> Just (n : caminho)
+                                            Nothing -> procuraLista x resto (n + 1)
 
